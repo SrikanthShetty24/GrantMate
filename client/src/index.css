@@ -1,0 +1,281 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --emerald: #059669;
+  --emerald-light: #d1fae5;
+  --emerald-dark: #047857;
+  --gold: #d97706;
+  --gold-light: #fef3c7;
+  --navy: #0f172a;
+  --navy-mid: #1e293b;
+  --navy-soft: #334155;
+  --slate: #64748b;
+  --slate-light: #f1f5f9;
+  --white: #ffffff;
+  --surface: #f8fafc;
+  --border: #e2e8f0;
+  --red: #dc2626;
+  --red-light: #fee2e2;
+  --blue: #2563eb;
+  --blue-light: #dbeafe;
+  --purple: #7c3aed;
+  --purple-light: #ede9fe;
+  --amber: #d97706;
+  --amber-light: #fef3c7;
+}
+
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--surface);
+    color: var(--navy);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+  }
+
+  h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+  }
+}
+
+@layer components {
+
+  /* ── Buttons ── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-xl
+      transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .btn-primary {
+    @apply btn px-5 py-2.5 text-sm;
+    background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-dark) 100%);
+    color: white;
+    box-shadow: 0 4px 14px rgba(5,150,105,0.35);
+  }
+  .btn-primary:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(5,150,105,0.45);
+  }
+
+  .btn-secondary {
+    @apply btn px-5 py-2.5 text-sm;
+    background: white;
+    color: var(--navy);
+    border: 1.5px solid var(--border);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .btn-secondary:hover:not(:disabled) {
+    border-color: var(--emerald);
+    color: var(--emerald-dark);
+    transform: translateY(-1px);
+  }
+
+  .btn-danger {
+    @apply btn px-5 py-2.5 text-sm;
+    background: var(--red);
+    color: white;
+  }
+
+  .btn-ghost {
+    @apply btn px-4 py-2 text-sm;
+    color: var(--slate);
+  }
+  .btn-ghost:hover { background: var(--slate-light); color: var(--navy); }
+
+  /* ── Cards ── */
+  .card {
+    background: white;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
+  }
+
+  .card-hover {
+    @apply card transition-all duration-300;
+  }
+  .card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    border-color: rgba(5,150,105,0.2);
+  }
+
+  /* ── Inputs ── */
+  .input {
+    @apply w-full px-4 py-3 rounded-xl text-sm transition-all duration-200;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    color: var(--navy);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .input::placeholder { color: var(--slate); }
+  .input:focus {
+    outline: none;
+    border-color: var(--emerald);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(5,150,105,0.12);
+  }
+
+  .label {
+    @apply block text-xs font-semibold mb-1.5 tracking-wide uppercase;
+    color: var(--slate);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  /* ── Badges ── */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+  .badge-green { @apply badge; background: var(--emerald-light); color: var(--emerald-dark); }
+  .badge-red { @apply badge; background: var(--red-light); color: var(--red); }
+  .badge-yellow { @apply badge; background: var(--gold-light); color: var(--gold); }
+  .badge-blue { @apply badge; background: var(--blue-light); color: var(--blue); }
+  .badge-purple { @apply badge; background: var(--purple-light); color: var(--purple); }
+  .badge-slate { @apply badge; background: var(--slate-light); color: var(--slate); }
+
+  /* ── Sidebar ── */
+  .nav-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-150;
+    color: var(--slate);
+  }
+  .nav-link:hover { background: var(--slate-light); color: var(--navy); }
+  .nav-link.active {
+    background: var(--emerald-light);
+    color: var(--emerald-dark);
+    font-weight: 700;
+  }
+  .nav-link.active .nav-icon { filter: none; }
+
+  /* ── Skeleton loader ── */
+  .skeleton {
+    @apply rounded-xl animate-pulse;
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* ── Stat card ── */
+  .stat-card {
+    @apply card p-5 flex items-center gap-4;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    opacity: 0.06;
+    transform: translate(20px, -20px);
+  }
+}
+
+/* ── Animations ── */
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(5,150,105,0.4); }
+  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(5,150,105,0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(5,150,105,0); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-fade-up { animation: fadeUp 0.5s ease-out forwards; }
+.animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+.animate-slide-left { animation: slideInLeft 0.4s ease-out forwards; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-pulse-ring { animation: pulse-ring 2s infinite; }
+
+.stagger-1 { animation-delay: 0.1s; opacity: 0; }
+.stagger-2 { animation-delay: 0.2s; opacity: 0; }
+.stagger-3 { animation-delay: 0.3s; opacity: 0; }
+.stagger-4 { animation-delay: 0.4s; opacity: 0; }
+.stagger-5 { animation-delay: 0.5s; opacity: 0; }
+.stagger-6 { animation-delay: 0.6s; opacity: 0; }
+
+/* ── Page transitions ── */
+.page-enter { animation: fadeUp 0.4s ease-out; }
+
+/* ── Gradient backgrounds ── */
+.hero-gradient {
+  background: linear-gradient(135deg, #0f172a 0%, #064e3b 50%, #0f172a 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.mesh-bg {
+  background-color: var(--surface);
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(5,150,105,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(217,119,6,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 10%, rgba(37,99,235,0.04) 0%, transparent 40%);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--slate); }
+
+/* ── Glass effect ── */
+.glass {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* ── Scholarship card urgency bar ── */
+.urgency-bar {
+  height: 3px;
+  border-radius: 0 0 20px 20px;
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+}
